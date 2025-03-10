@@ -30,5 +30,8 @@ public class HesapMak {
 
         // Uygulamanın yüklendigi dogrulanır
         assertTrue(driver.isAppInstalled("com.google.android.calculator"));
+
+        // Uygulamanın acıldıgını dogrular
+        assertTrue(driver.findElementById("com.google.android.calculator:id/op_pct").isDisplayed());
     }
 }

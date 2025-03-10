@@ -33,5 +33,17 @@ public class HesapMak {
 
         // Uygulamanın acıldıgını dogrular
         assertTrue(driver.findElementById("com.google.android.calculator:id/op_pct").isDisplayed());
+
+        // 650 un 2 katinin 1300 oldugunu hesap makinasindan dogrulayalim
+        driver.findElementByAccessibilityId("6").click();
+        driver.findElementByAccessibilityId("5").click();
+        driver.findElementByAccessibilityId("0").click();
+        driver.findElementByAccessibilityId("multiply").click();
+        driver.findElementByAccessibilityId("2").click();
+
+        String islemSonucu = driver.findElementById("com.google.android.calculator:id/result_preview").getText();
+        int beklenenSonuc = 1300;
+
+        assertEquals(Integer.parseInt(islemSonucu), beklenenSonuc);
     }
 }

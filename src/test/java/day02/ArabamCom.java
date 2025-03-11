@@ -7,16 +7,13 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
-
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class ArabamCom {
 
@@ -67,8 +64,8 @@ public class ArabamCom {
         Thread.sleep(2000);
         TouchAction action = new TouchAction<>(driver);
 
-        action.press(PointOption.point(500,1830)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(70)))
-                .moveTo(PointOption.point(500,409)).release().perform();
+        action.press(PointOption.point(500, 1830)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(70)))
+                .moveTo(PointOption.point(500, 409)).release().perform();
 
         driver.findElementByXPath("//*[@text='Volkswagen']").click();
 
@@ -76,5 +73,23 @@ public class ArabamCom {
         Thread.sleep(1000);
         driver.findElementByXPath("//*[@text='Passat']").click();
 
+        // 1.4 TSI BlueMotion secilir
+        Thread.sleep(1000);
+        driver.findElementByXPath("//*[@*='1.4 TSi BlueMotion']").click();
+
+        // Paket secimi comfortline yapilir
+        Thread.sleep(1000);
+        driver.findElementByXPath("//*[@*='Comfortline").click();
+
+        // Ucuzdan pahaliya siralama yaparak filtreleme yapilir
+        Thread.sleep(1000);
+        driver.findElementByXPath("//*[@*='Sıralama").click();
+        Thread.sleep(1000);
+        driver.findElementByXPath("//*[@*='Fiyat - Ucuzdan Pahalıya").click();
+
+        // Gelen en ucuz aracin 500.000 tl den buyuk oldugu dogrulanir
+        String enUcuzArabaFiyati = driver.findElementByXPath("(//*[@*='com.dogan.arabam:id/tvPrice'])[1]").getText();
+        enUcuzArabaFiyati = enUcuzArabaFiyati.replaceAll("\\D", "");
+        assertTrue(Integer.parseInt(enUcuzArabaFiyati) > 500000);
     }
 }

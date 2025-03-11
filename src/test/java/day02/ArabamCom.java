@@ -79,16 +79,16 @@ public class ArabamCom {
 
         // Paket secimi comfortline yapilir
         Thread.sleep(2000);
-        driver.findElementByXPath("//*[@text='Comfortline").click();
+        driver.findElementByXPath("//*[@text='Comfortline']").click();
 
         // Ucuzdan pahaliya siralama yaparak filtreleme yapilir
         Thread.sleep(2000);
-        driver.findElementByXPath("//*[@text='Sıralama").click();
+        driver.findElementByXPath("//*[@text='Sıralama']").click();
         Thread.sleep(2000);
-        driver.findElementByXPath("//*[@text='Fiyat - Ucuzdan Pahalıya").click();
+        driver.findElementByXPath("//*[@text='Fiyat - Ucuzdan Pahalıya']").click();
 
         // Gelen en ucuz aracin 500.000 tl den buyuk oldugu dogrulanir
-        String enUcuzArabaFiyati = driver.findElementByXPath("(//*[@text='com.dogan.arabam:id/tvPrice'])[1]").getText();
+        String enUcuzArabaFiyati = driver.findElementByXPath("(//*[@*='com.dogan.arabam:id/tvPrice'])[1]").getText();
         enUcuzArabaFiyati = enUcuzArabaFiyati.replaceAll("\\D", "");
         assertTrue(Integer.parseInt(enUcuzArabaFiyati) > 500000);
     }

@@ -52,5 +52,11 @@ public class ArabamCom {
 
         // uygulamanin basarili bir sekilde acildigi dogrulanir
         assertTrue(driver.findElementById("com.dogan.arabam:id/ivArabamLogo").isDisplayed());
+
+        // alt menuden ilan ara butonuna tiklanir
+        driver.findElementByXPath("//*[@text='İlan Ara']").click();
+
+        // kategori olarak otomobil secilir
+        driver.findElementByXPath("//*[@*='Otomobil']").click();
     }
 }

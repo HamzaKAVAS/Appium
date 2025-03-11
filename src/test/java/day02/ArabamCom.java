@@ -13,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+
 import static org.testng.Assert.*;
 
 public class ArabamCom {
@@ -91,5 +92,40 @@ public class ArabamCom {
         String enUcuzArabaFiyati = driver.findElementByXPath("(//*[@*='com.dogan.arabam:id/tvPrice'])[1]").getText();
         enUcuzArabaFiyati = enUcuzArabaFiyati.replaceAll("\\D", "");
         assertTrue(Integer.parseInt(enUcuzArabaFiyati) > 500000);
+    }
+
+    // alt menuden ilan ara butonuna tiklanir
+    // kategori olarak Kiralık Araçlar secilir
+    // arac olarak Minivan&Panelvan secilir
+    // arac markasi olarak peugeot secilir
+    // Bipper secilir
+    // listenin geldigi dogrulanir
+
+    @Test
+    public void test02() throws InterruptedException {
+        // alt menuden ilan ara butonuna tiklanir
+        driver.findElementByXPath("//*[@text='İlan Ara']").click();
+
+        // kategori olarak Kiralık Araçlar secilir
+        Thread.sleep(2000);
+        driver.findElementByXPath("//*[@text='Kiralık Araçlar']").click();
+
+        // arac olarak Minivan&Panelvan secilir
+        Thread.sleep(2000);
+        driver.findElementByXPath("//*[@text='Minivan & Panelvan']").click();
+
+        // arac markasi olarak peugeot secilir
+        Thread.sleep(2000);
+        driver.findElementByXPath("//*[@text='Peugeot']").click();
+
+        // Bipper secilir
+        Thread.sleep(2000);
+        driver.findElementByXPath("//*[@text='Bipper']").click();
+
+        // listenin geldigi dogrulanir
+        Thread.sleep(2000);
+        String ilanSayisi = driver.findElementById("com.dogan.arabam:id/texViewSubtitle").getText();
+        ilanSayisi = ilanSayisi.replaceAll("\\D", "");
+        assertTrue(Integer.parseInt(ilanSayisi) > 0);
     }
 }

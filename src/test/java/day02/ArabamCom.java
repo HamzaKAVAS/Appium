@@ -70,25 +70,25 @@ public class ArabamCom {
         driver.findElementByXPath("//*[@text='Volkswagen']").click();
 
         // arac modeli olarak passat secilir
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         driver.findElementByXPath("//*[@text='Passat']").click();
 
         // 1.4 TSI BlueMotion secilir
-        Thread.sleep(1000);
-        driver.findElementByXPath("//*[@*='1.4 TSi BlueMotion']").click();
+        Thread.sleep(2000);
+        driver.findElementByXPath("//*[@text='1.4 TSi BlueMotion']").click();
 
         // Paket secimi comfortline yapilir
-        Thread.sleep(1000);
-        driver.findElementByXPath("//*[@*='Comfortline").click();
+        Thread.sleep(2000);
+        driver.findElementByXPath("//*[@text='Comfortline").click();
 
         // Ucuzdan pahaliya siralama yaparak filtreleme yapilir
-        Thread.sleep(1000);
-        driver.findElementByXPath("//*[@*='Sıralama").click();
-        Thread.sleep(1000);
-        driver.findElementByXPath("//*[@*='Fiyat - Ucuzdan Pahalıya").click();
+        Thread.sleep(2000);
+        driver.findElementByXPath("//*[@text='Sıralama").click();
+        Thread.sleep(2000);
+        driver.findElementByXPath("//*[@text='Fiyat - Ucuzdan Pahalıya").click();
 
         // Gelen en ucuz aracin 500.000 tl den buyuk oldugu dogrulanir
-        String enUcuzArabaFiyati = driver.findElementByXPath("(//*[@*='com.dogan.arabam:id/tvPrice'])[1]").getText();
+        String enUcuzArabaFiyati = driver.findElementByXPath("(//*[@text='com.dogan.arabam:id/tvPrice'])[1]").getText();
         enUcuzArabaFiyati = enUcuzArabaFiyati.replaceAll("\\D", "");
         assertTrue(Integer.parseInt(enUcuzArabaFiyati) > 500000);
     }

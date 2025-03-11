@@ -1,8 +1,11 @@
 package day02;
 
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -10,6 +13,7 @@ import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertTrue;
@@ -46,7 +50,7 @@ public class ArabamCom {
     // Gelen en ucuz aracin 500.000 tl den buyuk oldugu dogrulanir
 
     @Test
-    public void test01(){
+    public void test01() throws InterruptedException {
         // uygulamanin basarili bir sekilde yuklendigi dogrulanir
         assertTrue(driver.isAppInstalled("com.dogan.arabam"));
 
@@ -58,5 +62,19 @@ public class ArabamCom {
 
         // kategori olarak otomobil secilir
         driver.findElementByXPath("//*[@*='Otomobil']").click();
+
+        // arac markası olarak Volkswagen secilir
+        Thread.sleep(2000);
+        TouchAction action = new TouchAction<>(driver);
+
+        action.press(PointOption.point(500,1830)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(70)))
+                .moveTo(PointOption.point(500,409)).release().perform();
+
+        driver.findElementByXPath("//*[@text='Volkswagen']").click();
+
+        // arac modeli olarak passat secilir
+        Thread.sleep(1000);
+        driver.findElementByXPath("//*[@text='Passat']").click();
+
     }
 }

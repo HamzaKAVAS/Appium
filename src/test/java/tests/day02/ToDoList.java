@@ -6,13 +6,12 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-
 import static org.testng.Assert.assertTrue;
 
 public class ToDoList {
@@ -81,5 +80,16 @@ public class ToDoList {
         for (int i = 0; i < 3; i++) {
             action.press(PointOption.point(850, 1200)).release().perform();
         }
+
+        // görev silinir
+        Thread.sleep(2000);
+        driver.findElementById("todolist.scheduleplanner.dailyplanner.todo.reminders:id/task_text").click();
+        driver.findElementById("todolist.scheduleplanner.dailyplanner.todo.reminders:id/task_detail_more").click();
+        driver.findElementById("todolist.scheduleplanner.dailyplanner.todo.reminders:id/detail_delete").click();
+        driver.findElementById("todolist.scheduleplanner.dailyplanner.todo.reminders:id/dialog_confirm").click();
+        Thread.sleep(2500);
+
+        // Görev olusturma sayfasina geri dönüldügü dogrulanir
+        Assert.assertTrue(driver.findElementById("todolist.scheduleplanner.dailyplanner.todo.reminders:id/iv_task_add").isDisplayed());
     }
 }

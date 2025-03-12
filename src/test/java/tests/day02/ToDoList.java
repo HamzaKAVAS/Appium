@@ -5,10 +5,13 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
+
+import static org.testng.Assert.assertTrue;
 
 public class ToDoList {
 
@@ -39,4 +42,15 @@ public class ToDoList {
     // görev kaydedilir
     // görev silinir
     // Görev olusturma sayfasina geri dönüldügü dogrulanir
+
+    @Test
+    public void testToDo() throws InterruptedException {
+        // uygulamanin basarili bir sekilde yuklendigi dogrulanir
+        Thread.sleep(1500);
+        assertTrue(driver.isAppInstalled("todolist.scheduleplanner.dailyplanner.todo.reminders"));
+
+        // uygulaminin basarili bir sekilde acildigi dogrulanir
+        Thread.sleep(2000);
+        assertTrue(driver.findElementByXPath("//*[@*='CONTINUE']").isDisplayed());
+    }
 }

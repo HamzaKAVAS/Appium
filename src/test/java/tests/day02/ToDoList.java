@@ -52,5 +52,19 @@ public class ToDoList {
         // uygulaminin basarili bir sekilde acildigi dogrulanir
         Thread.sleep(2000);
         assertTrue(driver.findElementByXPath("//*[@*='CONTINUE']").isDisplayed());
+
+        // Ileri butonlarina tiklanir ve pop-up lar kapatilir
+        Thread.sleep(2000);
+        driver.findElementByXPath("//*[@*='CONTINUE']").click();
+        Thread.sleep(2000);
+        driver.findElementByXPath("//*[@*='CONTINUE']").click();
+        Thread.sleep(2000);
+        driver.findElementById("todolist.scheduleplanner.dailyplanner.todo.reminders:id/toolbar_back").click();
+        Thread.sleep(2000);
+        driver.findElementById("todolist.scheduleplanner.dailyplanner.todo.reminders:id/dialog_pro_first_close").click();
+
+        // görev ekleme adimina gecilir
+        Thread.sleep(2000);
+        driver.findElementById("todolist.scheduleplanner.dailyplanner.todo.reminders:id/iv_task_add").click();
     }
 }

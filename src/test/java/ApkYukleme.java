@@ -25,4 +25,20 @@ public class ApkYukleme {
         driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
+
+    @Test
+    public void toDoList() throws MalformedURLException {
+
+        // Kullanici gerekli kurulumlari yapar
+        DesiredCapabilities caps = new DesiredCapabilities();
+
+        caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 148");
+        caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+        caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10.0");
+        caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+        caps.setCapability(MobileCapabilityType.APP, "D:\\Java\\SeleniumProject\\HmzAppium\\Apps\\To-Do List - Schedule Planner_1.02.61.0928_APKPure.apk");
+
+        driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    }
 }

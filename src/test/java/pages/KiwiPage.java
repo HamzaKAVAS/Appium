@@ -20,4 +20,27 @@ public class KiwiPage {
 
     @FindBy(xpath = "//*[@*='One way']")
     public WebElement oneWay;
+
+    @FindBy(xpath = "//*[@*='From:']")
+    public WebElement fromButonu;
+
+    @FindBy(xpath = "//*[@content-desc='Clear All']")
+    public WebElement silmeButonu;
+
+    @FindBy(xpath = "(//*[@class='android.view.View'])[4]")
+    public WebElement fromTextArea;
+
+    @FindBy(xpath = "(//*[@class='android.widget.Button'])[2]")
+    public WebElement kalkisVarisUlkesiButonu;
+
+    @FindBy(xpath = "//*[@text='Choose']")
+    public WebElement chooseButton;
+
+    @FindBy(xpath = "//*[@text='To:']")
+    public WebElement toButonu;
+
+    @FindBy(xpath = "//*[@text='Departure:']")
+    public WebElement tarihButonu;
+
+
 }

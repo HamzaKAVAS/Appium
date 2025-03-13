@@ -8,8 +8,8 @@ import utilities.Driver;
 
 public class KiwiPage {
 
-    public KiwiPage(){
-        PageFactory.initElements((WebDriver) Driver.getAndroidDriver(),this);
+    public KiwiPage() {
+        PageFactory.initElements((WebDriver) Driver.getAndroidDriver(), this);
     }
 
     @FindBy(xpath = "(//*[@*='android.widget.Button'])[4]")
@@ -42,5 +42,24 @@ public class KiwiPage {
     @FindBy(xpath = "//*[@text='Departure:']")
     public WebElement tarihButonu;
 
+    @FindBy(xpath = "//*[@text='Set date']")
+    public WebElement setDateButonu;
 
+    @FindBy(xpath = "(//*[@text='Search'])[1]")
+    public WebElement searchButonu;
+
+    @FindBy(xpath = "//*[@text='Best']")
+    public WebElement bestButonu;
+
+    @FindBy(xpath = "//*[@text='Stops']")
+    public WebElement stopsButton;
+
+    @FindBy(xpath = "//*[@text='Cheapest']")
+    public WebElement cheapestButton;
+
+    @FindBy(xpath = "//*[@text='Nonstop']")
+    public WebElement nonstopButton;
+
+    @FindBy(xpath = "(//*[@class='android.widget.TextView'])[12]")
+    public WebElement fiyatBilgisi;
 }

@@ -83,5 +83,31 @@ public class Kiwi {
         page.kalkisVarisUlkesiButonu.click();
         Thread.sleep(2000);
         page.chooseButton.click();
+
+        // gidis tarihi 28 Mart olarak secilir ve set date e tiklanir
+        page.tarihButonu.click();
+        Thread.sleep(2000);
+        ReusableMethods.koordinatTiklamaMethodu(800, 1400, 300);
+        //TouchAction action = new TouchAction<>(driver);
+        //action.press(PointOption.point(560,1490)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(600)))
+        //                .moveTo(PointOption.point(800,400)).release().perform();
+
+        //ReusableMethods.koordinatTiklamaMethodu(803,1400,500); Ekranda olmayan bir tarihi seçmek istediğimizde yaptık.
+        Thread.sleep(2000);
+        page.setDateButonu.click();
+
+        // search butonuna tiklanir
+        Thread.sleep(2000);
+        page.searchButonu.click();
+
+        // en ucuz ve aktarmasiz filtrelemeleri yapilir
+        page.bestButonu.click();
+        page.cheapestButton.click();
+        page.stopsButton.click();
+        page.nonstopButton.click();
+
+        // gelen bilet fiyati kaydedilir ve kullanicin telefonuna sms olarak gonderilir
+        String fiyat = page.fiyatBilgisi.getText();
+        driver.sendSMS("11111222", "Sectiginiz biletin fiyat bilgisi " + fiyat);
     }
 }

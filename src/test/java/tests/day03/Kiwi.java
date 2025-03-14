@@ -2,7 +2,10 @@ package tests.day03;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.KiwiPage;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 public class Kiwi {
@@ -22,4 +25,18 @@ public class Kiwi {
     // search butonuna tiklanir
     // en ucuz ve aktarmasiz filtrelemeleri yapilir
     // gelen bilet fiyati kaydedilir ve kullanicin telefonuna sms olarak gonderilir
+
+    @Test
+    public void kiwiTest() throws InterruptedException {
+        // uygulamanin yuklendigi dogrulanir
+        Assert.assertTrue(driver.isAppInstalled(ConfigReader.getProperty("kiwiAppPackage")));
+
+        // uygulamanin basariyla acildigi dogrulanir
+        Thread.sleep(2000);
+        Assert.assertTrue(page.continueAsGuest.isDisplayed());
+
+        // misafir olarak devam et e tiklanir
+        Thread.sleep(2000);
+        page.continueAsGuest.click();
+    }
 }

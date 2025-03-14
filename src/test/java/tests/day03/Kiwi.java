@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.KiwiPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class Kiwi {
 
@@ -38,5 +39,23 @@ public class Kiwi {
         // misafir olarak devam et e tiklanir
         Thread.sleep(2000);
         page.continueAsGuest.click();
+
+        // ardindan gelecek olan 3 adimda da yesil butona basilarak devam edilir
+        Thread.sleep(2000);
+        for (int i = 0; i < 3; i++) {
+            ReusableMethods.koordinatTiklamaMethodu(550, 2060, 300);
+        }
+
+        // Trip type,one way olarak secilir
+        Thread.sleep(2000);
+        page.returnTrip.click();
+        Thread.sleep(2000);
+        page.oneWay.click();
+
+        // kalkis ulkesi secenegine tiklanir ve default olan ulke kaldirilir
+        Thread.sleep(2000);
+        page.fromButonu.click();
+        Thread.sleep(2000);
+        page.silmeButonu.click();
     }
 }
